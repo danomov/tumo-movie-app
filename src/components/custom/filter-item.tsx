@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Checkbox } from "@/components/ui/checkbox.tsx";
 import { Label } from "@/components/ui/label.tsx";
 
@@ -24,4 +25,4 @@ function FilterItem({ name, id, isActive, onGenreChange }: IFilterItemProps) {
   );
 }
 
-export default FilterItem;
+export default memo(FilterItem);

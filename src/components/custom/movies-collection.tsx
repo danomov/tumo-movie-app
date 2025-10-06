@@ -30,7 +30,7 @@ function MoviesCollection() {
   }
 
   return (
-    <section className="grid grid-cols-3 gap-x-4 gap-y-4 items-center">
+    <section className="grid grid-cols-3 gap-x-4 gap-y-6 md:gap-y-10 items-center">
       {data?.pages.map((results) => (
         results.movies?.map((movie: IMovie) => (
           <MovieCard key={movie.id} movie={movie} />

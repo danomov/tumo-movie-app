@@ -5,7 +5,7 @@ import { ETheme } from "@/types.ts";
 
 function HeaderProvider({ children }: { children: ReactNode }) {
   return (
-    <div className="grid grid-rows-[70px_1fr] justify-items-center min-h-screen pb-20 px-4 md:px-20">
+    <div className="grid grid-rows-[70px_1fr] justify-items-center min-h-screen pb-20 px-[2%] md:px-[10%]">
       <ThemeProvider defaultTheme={ETheme.Dark} storageKey="vite-ui-theme">
         <Header />
       </ThemeProvider>

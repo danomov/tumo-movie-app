@@ -12,6 +12,7 @@ import useFilterContext from "@/hooks/useFilterContext.ts";
 import useSearchContext from "@/hooks/useSearchContext.ts";
 
 function Filters() {
+  const [open, setOpen] = useState(false);
   const [selectedGenreIds, setSelectedGenreIds] = useState<number[]>([]);
 
   const { data, isLoading } = useQuery({
@@ -25,17 +26,16 @@ function Filters() {
   const { onSearch } = useSearchContext();
   const { filters, onSubmitFilters } = useFilterContext();
 
-  const handleGenreChange = (checked: string | boolean, targetGenreId: number) => {
+  const handleGenreChange = useCallback((checked: string | boolean, targetGenreId: number) => {
     if (checked === "indeterminate") return;
 
     if (checked) {
-      setSelectedGenreIds([...selectedGenreIds, targetGenreId]);
+      setSelectedGenreIds(selectedGenres => ([...selectedGenres, targetGenreId]));
       return;
     }
 
-    const filteredGenres = selectedGenreIds.filter(genreId => genreId !== targetGenreId);
-    setSelectedGenreIds(filteredGenres);
-  };
+    setSelectedGenreIds(selectedGenres => selectedGenres.filter(genreId => genreId !== targetGenreId));
+  }, []);
 
   const resetFilters = useCallback(() => {
     setSelectedGenreIds([]);
@@ -46,6 +46,7 @@ function Filters() {
       genreIds: selectedGenreIds,
     });
     onSearch("");
+    setOpen(false);
   }, [onSearch, onSubmitFilters, selectedGenreIds]);
 
   useEffect(() => {
@@ -53,7 +54,7 @@ function Filters() {
   }, [filters, resetFilters]);
 
   return (
-    <Popover>
+    <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button variant="outline">
           <Funnel /> Filter

@@ -82,31 +82,6 @@ function MovieDetailsSkeleton() {
 
         <Separator className="my-12" />
 
-        <section className="mb-12">
-          <Skeleton className="h-8 w-40 mb-6" />
-          <div className="space-y-4">
-            {new Array(6).fill(1).map((_, index) => (
-              <Card key={index}>
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-3 mb-3">
-                    <Skeleton className="w-10 h-10 rounded-full" />
-                    <div>
-                      <Skeleton className="h-4 w-24 mb-1" />
-                      <Skeleton className="h-3 w-16" />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Skeleton className="h-4 w-full" />
-                    <Skeleton className="h-4 w-3/4" />
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
-
-        <Separator className="my-12" />
-
         <section>
           <Skeleton className="h-8 w-48 mb-6" />
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">

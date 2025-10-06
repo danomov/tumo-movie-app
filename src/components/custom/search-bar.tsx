@@ -4,13 +4,11 @@ import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/in
 import { skipToken, useQuery } from "@tanstack/react-query";
 import searchMovies from "@/actions/search-movies.ts";
 import { Spinner } from "@/components/ui/spinner.tsx";
-import { Link } from "react-router";
 import { X } from "lucide-react";
-import constructMoviePath from "@/utils/construct-movie-path.ts";
 import Button from "@/components/ui/button.tsx";
 import useSearchContext from "@/hooks/useSearchContext.ts";
 import useFilterContext from "@/hooks/useFilterContext.ts";
-import SuggestionItem from "@/components/custom/suggestion-item.tsx";
+import Suggestions from "@/components/custom/suggestions.tsx";
 
 function SearchBar() {
   const [searchValue, setSearchValue] = useState("");
@@ -46,8 +44,8 @@ function SearchBar() {
   }, [onSearch, onSubmitFilters, searchValue]);
 
   useEffect(() => {
-    if (!search) handleClearSearch();
-  }, [search, handleClearSearch]);
+    if (!search) setSearchValue("");
+  }, [search]);
 
   return (
     <div className="relative w-full">
@@ -65,15 +63,7 @@ function SearchBar() {
           )}
         </InputGroupAddon>
       </InputGroup>
-      {data?.results && searchValue && (
-        <div className="absolute inset-x-0 top-[calc(100%+1rem)] z-10 bg-popover rounded-md shadow-lg overflow-hidden">
-          {data.results.slice(0, 3).map((suggestion) => (
-            <Link key={suggestion.id} to={constructMoviePath(suggestion.id)}>
-              <SuggestionItem suggestion={suggestion} />
-            </Link>
-          ))}
-        </div>
-      )}
+      <Suggestions suggestions={data?.results} debouncedSearchQuery={debouncedSearchQuery} />
     </div>
   );
 }
