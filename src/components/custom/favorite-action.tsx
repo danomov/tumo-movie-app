@@ -1,6 +1,6 @@
 import Button from "@/components/ui/button.tsx";
 import { Heart } from "lucide-react";
-import useFavoriteMovies from "@/hooks/useFavoriteMovies.tsx";
+import useFavoriteMovies from "@/hooks/useFavoriteMovies.ts";
 
 interface IFavoriteActionProps {
   id: number;

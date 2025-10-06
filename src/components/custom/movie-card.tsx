@@ -3,9 +3,10 @@ import { Link } from "react-router";
 import type { IMovie } from "@/types";
 import { Star } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import formatReleaseDate from "@/utils/format-release-date.tsx";
-import constructMoviePath from "@/utils/construct-movie-path.tsx";
+import formatReleaseDate from "@/utils/format-release-date.ts";
+import constructMoviePath from "@/utils/construct-movie-path.ts";
 import MovieCardFavorite from "@/components/custom/movie-card-favorite.tsx";
+import constructPosterPath from "@/utils/construct-poster-path.ts";
 
 interface IMovieCardProps {
   movie: IMovie;
@@ -24,7 +25,7 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
           <div className="relative aspect-[3/4]">
             <img
               alt={movie.title}
-              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              src={constructPosterPath(movie.poster_path)}
               className="object-cover transition-all group-hover:brightness-75"
             />
             <MovieCardFavorite id={movie.id} />

@@ -5,7 +5,6 @@ import { Card, CardContent } from "@/components/ui/card";
 function MovieDetailsSkeleton() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero Section Skeleton */}
       <div className="relative">
         <div className="absolute inset-0">
           <Skeleton className="h-full w-full" />
@@ -15,12 +14,10 @@ function MovieDetailsSkeleton() {
           <Skeleton className="h-10 w-32 mb-6" />
 
           <div className="flex flex-col lg:flex-row gap-8">
-            {/* Movie Poster Skeleton */}
             <div className="flex-shrink-0">
               <Skeleton className="w-80 h-[480px] mx-auto lg:mx-0 rounded-lg" />
             </div>
 
-            {/* Movie Info Skeleton */}
             <div className="flex-1">
               <div className="flex flex-wrap gap-2 mb-4">
                 <Skeleton className="h-6 w-16 rounded-full" />
@@ -67,13 +64,11 @@ function MovieDetailsSkeleton() {
         </div>
       </div>
 
-      {/* Content Sections Skeleton */}
       <div className="container mx-auto px-4 py-12">
-        {/* Cast Section Skeleton */}
         <section className="mb-12">
           <Skeleton className="h-8 w-32 mb-6" />
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {Array.from({ length: 6 }).map((_, index) => (
+            {new Array(6).fill(1).map((_, index) => (
               <Card key={index}>
                 <CardContent className="p-4 text-center">
                   <Skeleton className="w-20 h-20 rounded-full mx-auto mb-3" />
@@ -87,11 +82,10 @@ function MovieDetailsSkeleton() {
 
         <Separator className="my-12" />
 
-        {/* Reviews Section Skeleton */}
         <section className="mb-12">
           <Skeleton className="h-8 w-40 mb-6" />
           <div className="space-y-4">
-            {Array.from({ length: 3 }).map((_, index) => (
+            {new Array(6).fill(1).map((_, index) => (
               <Card key={index}>
                 <CardContent className="p-6">
                   <div className="flex items-start gap-3 mb-3">
@@ -113,11 +107,10 @@ function MovieDetailsSkeleton() {
 
         <Separator className="my-12" />
 
-        {/* Similar Movies Section Skeleton */}
         <section>
           <Skeleton className="h-8 w-48 mb-6" />
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {Array.from({ length: 6 }).map((_, index) => (
+            {new Array(6).fill(1).map((_, index) => (
               <Card key={index}>
                 <CardContent className="p-0">
                   <Skeleton className="aspect-[3/4] w-full rounded-lg" />

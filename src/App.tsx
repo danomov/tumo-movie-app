@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { QueryCache, QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ToastProvider from "@/providers/toast-provider.tsx";
 import HeaderProvider from "@/providers/header-provider.tsx";
+import ScrollToTop from "@/components/custom/scroll-top.tsx";
 
 const queryClient = new QueryClient({
   queryCache: new QueryCache({
@@ -19,6 +20,7 @@ function App() {
       <HeaderProvider>
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
+            <ScrollToTop />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/movie/:id" element={<Movie />} />

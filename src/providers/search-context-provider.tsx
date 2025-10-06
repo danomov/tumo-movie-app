@@ -12,7 +12,7 @@ function SearchContextProvider({ children }: { children: ReactNode }) {
     <SearchContext.Provider
       value={{
         search,
-        handleSearch
+        onSearch: handleSearch
       }}
     >
       {children}

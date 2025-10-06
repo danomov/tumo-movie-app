@@ -1,23 +1,18 @@
 import { memo } from "react";
-import { useInfiniteQuery } from "@tanstack/react-query";
-import getMovies from "@/actions/get-movies.ts";
 import MovieCard from "@/components/custom/movie-card.tsx";
 import type { IMovie } from "@/types.ts";
 import MovieCardSkeleton from "@/components/custom/movie-card-skeleton.tsx";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver.ts";
 import NoMoviesFound from "@/components/custom/no-movies-found.tsx";
 import { MOVIE_GRID_SKELETON_ITEMS_COUNT } from "@/constants.ts";
+import useSearchContext from "@/hooks/useSearchContext.ts";
+import useFilterContext from "@/hooks/useFilterContext.ts";
+import useDiscoverMovies from "@/hooks/useDiscoverMovies.ts";
 
 function MoviesCollection() {
-  const { data, isFetching, hasNextPage, fetchNextPage } = useInfiniteQuery({
-    queryKey: ["movies"],
-    queryFn: ({ pageParam = 1 }) => getMovies(pageParam),
-    initialPageParam: 1,
-    getNextPageParam: (lastPage) => {
-      return lastPage.page < lastPage.total_pages ? lastPage.page + 1 : undefined;
-    },
-    refetchOnWindowFocus: false,
-  });
+  const { search } = useSearchContext();
+  const { filters } = useFilterContext();
+  const { data, isFetching, hasNextPage, fetchNextPage } = useDiscoverMovies({ searchQuery: search, filters });
 
   const handleLoadMore = () => {
     if (hasNextPage) {
@@ -30,7 +25,7 @@ function MoviesCollection() {
     root: document
   });
 
-  if (!data && !isFetching) {
+  if (!data?.pages[0].movies?.length && !isFetching) {
     return <NoMoviesFound />;
   }
 

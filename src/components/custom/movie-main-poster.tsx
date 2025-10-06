@@ -1,4 +1,5 @@
 import type { IMovieDetails } from "@/types.ts";
+import constructPosterPath from "@/utils/construct-poster-path.ts";
 
 interface IMovieMainPosterProps {
   title: IMovieDetails["title"];
@@ -12,7 +13,7 @@ function MovieMainPoster({ title, posterPath }: IMovieMainPosterProps) {
         <img
           alt={title}
           className="object-cover rounded-lg shadow-2xl w-full h-full"
-          src={`https://image.tmdb.org/t/p/w500/${posterPath}`}
+          src={constructPosterPath(posterPath)}
         />
       </div>
     </div>

@@ -17,9 +17,9 @@ async function getMovie(id: string): Promise<IGetMovieReturnType> {
   url3.searchParams.set("api_key", import.meta.env.VITE_TMDB_API_KEY || "");
 
   const response = await Promise.all([
-    fetch(url),
-    fetch(url2),
-    fetch(url3),
+    fetch(url, { cache: "no-store" }),
+    fetch(url2, { cache: "no-store" }),
+    fetch(url3, { cache: "no-store" }),
   ]);
 
   if (!response[0].ok || !response[1].ok || !response[2].ok) {

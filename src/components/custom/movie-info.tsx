@@ -2,7 +2,7 @@ import type { IGenre, IMovieDetails } from "@/types.ts";
 import { Badge } from "@/components/ui/badge.tsx";
 import { Star } from "lucide-react";
 import { useMemo } from "react";
-import formatReleaseDate from "@/utils/format-release-date.tsx";
+import formatReleaseDate from "@/utils/format-release-date.ts";
 import MovieActions from "@/components/custom/movie-actions.tsx";
 
 interface IMovieInfoProps {
@@ -54,7 +54,9 @@ function MovieInfo({ movie }: IMovieInfoProps) {
           </p>
           <p>
             <span className="font-semibold">Language:</span>
-            <span className="ml-1">{movie.spoken_languages.map(language => language.english_name).join(", ")}</span>
+            <span className="ml-1">
+              {movie.spoken_languages.map(language => language.english_name).join(", ")}
+            </span>
           </p>
         </div>
       </div>

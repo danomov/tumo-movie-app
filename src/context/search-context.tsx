@@ -2,12 +2,12 @@ import { createContext } from "react";
 
 const initialState = {
   search: "",
-  handleSearch: () => {}
+  onSearch: () => {}
 };
 
 interface ISearchContext {
   search: string;
-  handleSearch: (value: string) => void;
+  onSearch: (value: string) => void;
 }
 
 const SearchContext = createContext<ISearchContext>(initialState);

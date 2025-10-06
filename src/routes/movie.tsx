@@ -20,6 +20,8 @@ function Movie() {
       ? () => getMovie(movieId)
       : skipToken,
     refetchOnWindowFocus: false,
+    staleTime: 1000 * 60 * 60 * 24, // 24 hours
+    gcTime: 1000 * 60 * 60 * 25 // 25 hours,
   });
 
   const { movie, cast, similar } = data || {};

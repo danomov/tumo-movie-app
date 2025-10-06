@@ -9,7 +9,7 @@ async function getTrailers(movieId: number): Promise<ITrailersReturnType> {
   url.searchParams.set("api_key", import.meta.env.VITE_TMDB_API_KEY || "");
   url.searchParams.set("language", "en");
 
-  const response = await fetch(url);
+  const response = await fetch(url, { cache: "no-store" });
 
   if (!response.ok) {
     throw new Error("Failed to fetch trailers");

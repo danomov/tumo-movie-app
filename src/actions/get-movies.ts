@@ -1,27 +1,32 @@
+import searchMovies from "@/actions/search-movies.ts";
+import type { IGetPopularMoviesReturnType, IMovie, ISearchMoviesReturnType } from "@/types.ts";
+import getPopularMovies from "@/actions/get-popular-movies.ts";
+
 interface IMoviesReturnType {
-  movies: [] | null;
+  movies: IMovie[] | null;
   page: number;
   total_pages: number;
 }
 
-async function getMovies(page = 1): Promise<IMoviesReturnType> {
-  // 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=sci-fi'
-  const url = new URL("https://api.themoviedb.org/3/movie/popular");
-  url.searchParams.set("api_key", import.meta.env.VITE_TMDB_API_KEY || "");
-  url.searchParams.set("page", String(page));
+interface IGetMoviesProps {
+  page: number;
+  searchQuery?: string;
+  genres?: number[];
+}
 
-  const response = await fetch(url);
+async function getMovies({ page, searchQuery, genres }: IGetMoviesProps): Promise<IMoviesReturnType> {
+  let response: IGetPopularMoviesReturnType | ISearchMoviesReturnType;
 
-  if (!response.ok) {
-    throw new Error("Failed to fetch movies");
+  if (searchQuery && !genres?.length) {
+    response = await searchMovies({ page, query: searchQuery });
+  } else {
+    response = await getPopularMovies({ page, genres });
   }
 
-  const movies = await response.json();
-
   return {
-    movies: movies.results,
-    page: movies.page,
-    total_pages: movies.total_pages,
+    movies: response.results,
+    page: response.page,
+    total_pages: response.total_pages,
   };
 }
 
