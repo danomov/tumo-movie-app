@@ -14,9 +14,10 @@ function FavoriteAction({ id }: IFavoriteActionProps) {
       size="lg"
       variant="outline"
       onClick={() => toggleFavoriteMovies(id)}
-      className="gap-2 bg-white/10 border-white/20 text-white hover:bg-white/20"
+      data-is-active={favoriteMovies.includes(id)}
+      className="group gap-2 bg-white/10 border-white/20 text-white hover:bg-white/20"
     >
-      <Heart className={`h-5 w-5 ${favoriteMovies.includes(id) ? "fill-red-500 text-red-500" : ""}`}/>
+      <Heart className="h-5 w-5 transition-colors duration-300 ease-in-out group-data-[is-active=true]:fill-red-500 group-data-[is-active=true]:text-red-500 group-data-[is-active=false]:group-hover:animate-pulse" />
       {favoriteMovies.includes(id) ? "Favorite" : "Add to Favorites"}
     </Button>
   );

@@ -32,7 +32,8 @@ function MoviesCollection() {
     await queryClient.prefetchQuery({
       queryKey: ["movie", id],
       queryFn: () => getMovie(id),
-      staleTime: 50000,
+      staleTime: 1000 * 60 * 60 * 24, // 24 hours
+      gcTime: 1000 * 60 * 60 * 25 // 25 hours
     });
   }), [queryClient]);
 

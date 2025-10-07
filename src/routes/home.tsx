@@ -2,6 +2,7 @@ import SearchContextProvider from "@/providers/search-context-provider.tsx";
 import SearchPanel from "@/components/custom/search-panel.tsx";
 import MoviesCollection from "@/components/custom/movies-collection.tsx";
 import FiltersContextProvider from "@/providers/filters-context-provider.tsx";
+import ScrollTopButton from "@/components/custom/scroll-top-button.tsx";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
         <SearchContextProvider>
           <SearchPanel />
           <MoviesCollection />
+          <ScrollTopButton />
         </SearchContextProvider>
       </FiltersContextProvider>
     </div>

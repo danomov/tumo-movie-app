@@ -37,9 +37,10 @@ function Filters() {
     setSelectedGenreIds(selectedGenres => selectedGenres.filter(genreId => genreId !== targetGenreId));
   }, []);
 
-  const resetFilters = useCallback(() => {
+  const handleResetFilters = useCallback(() => {
     setSelectedGenreIds([]);
-  }, []);
+    onSubmitFilters({ genreIds: [] });
+  }, [onSubmitFilters]);
 
   const handleApplyFilters = useCallback(() => {
     onSubmitFilters({
@@ -50,8 +51,8 @@ function Filters() {
   }, [onSearch, onSubmitFilters, selectedGenreIds]);
 
   useEffect(() => {
-    if (!filters.genreIds.length) resetFilters();
-  }, [filters, resetFilters]);
+    if (!filters.genreIds.length) setSelectedGenreIds([]);
+  }, [filters]);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -73,7 +74,8 @@ function Filters() {
         {(isLoading || !data) && new Array(FILTER_SKELETON_ITEMS_COUNT).fill(1).map(() => (
           <FilterItemSkeleton />
         ))}
-        <Button variant="outline" size="sm" className="w-full mt-3" onClick={handleApplyFilters}>Apply</Button>
+        <Button size="sm" className="w-full mt-3" onClick={handleApplyFilters}>Apply</Button>
+        <Button variant="outline" size="sm" className="w-full mt-2" onClick={handleResetFilters}>Clear Filters</Button>
       </PopoverContent>
     </Popover>
   );
