@@ -3,8 +3,8 @@ import FavoriteAction from "@/components/custom/favorite-action.tsx";
 import TrailerAction from "@/components/custom/trailer-action.tsx";
 
 interface IMovieActionsProps {
-  id: IMovieDetails["id"];
-  title: IMovieDetails["title"];
+  id: IMovieDetails["id"],
+  title: IMovieDetails["title"],
 }
 
 function MovieActions({ id, title }: IMovieActionsProps) {

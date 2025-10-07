@@ -12,10 +12,10 @@ import getTrailers from "@/actions/get-trailers.ts";
 import TrailerSkeleton from "@/components/custom/trailer-skeleton.tsx";
 
 interface ITrailerDialogProps {
-  title: string;
-  movieId: number;
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
+  title: string,
+  movieId: number,
+  open: boolean,
+  onOpenChange: (open: boolean) => void,
 }
 
 function TrailerDialog({ title, movieId, open, onOpenChange }: ITrailerDialogProps) {

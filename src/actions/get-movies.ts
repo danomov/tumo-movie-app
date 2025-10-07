@@ -3,15 +3,15 @@ import type { IGetPopularMoviesReturnType, IMovie, ISearchMoviesReturnType } fro
 import getPopularMovies from "@/actions/get-popular-movies.ts";
 
 interface IMoviesReturnType {
-  movies: IMovie[] | null;
-  page: number;
-  total_pages: number;
+  movies: IMovie[] | null,
+  page: number,
+  total_pages: number,
 }
 
 interface IGetMoviesProps {
-  page: number;
-  searchQuery?: string;
-  genres?: number[];
+  page: number,
+  searchQuery?: string,
+  genres?: number[],
 }
 
 async function getMovies({ page, searchQuery, genres }: IGetMoviesProps): Promise<IMoviesReturnType> {

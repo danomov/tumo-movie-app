@@ -2,8 +2,8 @@ import { createContext } from "react";
 import { ETheme } from "@/types.ts";
 
 interface IThemeProviderState {
-  theme: ETheme
-  toggleTheme: () => void
+  theme: ETheme,
+  toggleTheme: () => void,
 }
 
 const initialState: IThemeProviderState = {

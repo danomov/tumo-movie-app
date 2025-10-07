@@ -9,8 +9,8 @@ const initialState = {
 };
 
 interface IFiltersContext {
-  filters: IFiltersData;
-  onSubmitFilters: (newFilters: Partial<IFiltersData>) => void;
+  filters: IFiltersData,
+  onSubmitFilters: (newFilters: Partial<IFiltersData>) => void,
 }
 
 const FiltersContext = createContext<IFiltersContext>(initialState);

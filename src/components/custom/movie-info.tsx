@@ -6,7 +6,7 @@ import formatReleaseDate from "@/utils/format-release-date.ts";
 import MovieActions from "@/components/custom/movie-actions.tsx";
 
 interface IMovieInfoProps {
-  movie: IMovieDetails;
+  movie: IMovieDetails,
 }
 
 function MovieInfo({ movie }: IMovieInfoProps) {

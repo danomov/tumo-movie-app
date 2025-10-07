@@ -4,9 +4,9 @@ import ThemeProviderContext from "@/context/theme-context";
 import { THEME_KEY } from "@/constants.ts";
 
 interface IThemeProviderProps {
-  children: ReactNode
-  defaultTheme?: ETheme
-  storageKey?: string
+  children: ReactNode,
+  defaultTheme?: ETheme,
+  storageKey?: string,
 }
 
 export function ThemeProvider({

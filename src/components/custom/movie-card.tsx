@@ -9,7 +9,7 @@ import MovieCardFavorite from "@/components/custom/movie-card-favorite.tsx";
 import constructPosterPath from "@/utils/construct-poster-path.ts";
 
 interface IMovieCardProps {
-  movie: IMovie;
+  movie: IMovie,
 }
 
 const MovieCard = ({ movie }: IMovieCardProps) => {

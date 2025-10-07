@@ -1,7 +1,7 @@
 import type { ITrailers } from "@/types.ts";
 
 interface ITrailersReturnType {
-  trailers: ITrailers[]
+  trailers: ITrailers[],
 }
 
 async function getTrailers(movieId: number): Promise<ITrailersReturnType> {

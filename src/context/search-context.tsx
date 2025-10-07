@@ -6,8 +6,8 @@ const initialState = {
 };
 
 interface ISearchContext {
-  search: string;
-  onSearch: (value: string) => void;
+  search: string,
+  onSearch: (value: string) => void,
 }
 
 const SearchContext = createContext<ISearchContext>(initialState);

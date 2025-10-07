@@ -2,8 +2,8 @@ import type { IMovieDetails } from "@/types.ts";
 import constructPosterPath from "@/utils/construct-poster-path.ts";
 
 interface IMovieMainPosterProps {
-  title: IMovieDetails["title"];
-  posterPath: IMovieDetails["poster_path"];
+  title: IMovieDetails["title"],
+  posterPath: IMovieDetails["poster_path"],
 }
 
 function MovieMainPoster({ title, posterPath }: IMovieMainPosterProps) {

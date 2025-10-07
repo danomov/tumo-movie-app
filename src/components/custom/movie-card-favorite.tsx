@@ -2,7 +2,7 @@ import { Heart } from "lucide-react";
 import useFavoriteMovies from "@/hooks/useFavoriteMovies.ts";
 
 interface IMovieCardFavoriteProps {
-  id: number;
+  id: number,
 }
 
 function MovieCardFavorite({ id }: IMovieCardFavoriteProps) {

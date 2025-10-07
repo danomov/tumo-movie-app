@@ -1,8 +1,8 @@
 import type { IFiltersData, IGetPopularMoviesReturnType } from "@/types.ts";
 
 interface IGetPopularMoviesProps {
-  page: number;
-  genres?: IFiltersData["genreIds"];
+  page: number,
+  genres?: IFiltersData["genreIds"],
 }
 
 async function getPopularMovies({ page, genres }: IGetPopularMoviesProps): Promise<IGetPopularMoviesReturnType> {

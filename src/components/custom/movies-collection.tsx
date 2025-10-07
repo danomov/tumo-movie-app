@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useCallback, useEffect } from "react";
 import MovieCard from "@/components/custom/movie-card.tsx";
 import type { IMovie } from "@/types.ts";
 import MovieCardSkeleton from "@/components/custom/movie-card-skeleton.tsx";
@@ -8,10 +8,13 @@ import { MOVIE_GRID_SKELETON_ITEMS_COUNT } from "@/constants.ts";
 import useSearchContext from "@/hooks/useSearchContext.ts";
 import useFilterContext from "@/hooks/useFilterContext.ts";
 import useDiscoverMovies from "@/hooks/useDiscoverMovies.ts";
+import { useQueryClient } from "@tanstack/react-query";
+import getMovie from "@/actions/get-movie.ts";
 
 function MoviesCollection() {
   const { search } = useSearchContext();
   const { filters } = useFilterContext();
+  const queryClient = useQueryClient();
   const { data, isFetching, hasNextPage, fetchNextPage } = useDiscoverMovies({ searchQuery: search, filters });
 
   const handleLoadMore = () => {
@@ -24,6 +27,23 @@ function MoviesCollection() {
     callback: handleLoadMore,
     root: document
   });
+
+  const prefetchMovies = useCallback((async (id: number) => {
+    await queryClient.prefetchQuery({
+      queryKey: ["movie", id],
+      queryFn: () => getMovie(id),
+      staleTime: 50000,
+    });
+  }), [queryClient]);
+
+  useEffect(() => {
+    const movies = data?.pages[0].movies;
+
+    if (movies?.length) {
+      const prefetchMovieIds = movies.slice(0, 3)?.map((movie: IMovie) => movie.id);
+      prefetchMovieIds.forEach((id) => prefetchMovies(id));
+    }
+  }, [data?.pages, prefetchMovies]);
 
   if (!data?.pages[0].movies?.length && !isFetching) {
     return <NoMoviesFound />;

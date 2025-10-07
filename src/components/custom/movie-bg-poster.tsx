@@ -1,8 +1,8 @@
 import type { IMovieDetails } from "@/types.ts";
 
 interface IMovieBgPosterProps {
-  title: IMovieDetails["title"];
-  backdropPath: IMovieDetails["backdrop_path"];
+  title: IMovieDetails["title"],
+  backdropPath: IMovieDetails["backdrop_path"],
 }
 
 function MovieBgPoster({ title, backdropPath }: IMovieBgPosterProps) {

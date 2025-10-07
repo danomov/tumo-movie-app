@@ -36,6 +36,19 @@ export default defineConfig([
       "@stylistic/indent": ["error", 2],
       "@stylistic/semi-style": ["error", "last"],
       "@stylistic/semi": ["error", "always"],
+      "@stylistic/member-delimiter-style": [
+        "error",
+        {
+          "multiline": {
+            "delimiter": "comma",
+            "requireLast": true
+          },
+          "singleline": {
+            "delimiter": "comma",
+            "requireLast": true
+          }
+        }
+      ],
       "no-mixed-spaces-and-tabs": "error",
     }
   },

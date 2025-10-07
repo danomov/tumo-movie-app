@@ -3,8 +3,8 @@ import getMovies from "@/actions/get-movies.ts";
 import type { IFiltersData } from "@/types.ts";
 
 interface IUseDiscoverMoviesProps {
-  searchQuery?: string;
-  filters?: IFiltersData;
+  searchQuery?: string,
+  filters?: IFiltersData,
 }
 
 function useDiscoverMovies({ searchQuery, filters }: IUseDiscoverMoviesProps) {

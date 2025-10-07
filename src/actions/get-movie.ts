@@ -1,12 +1,12 @@
 import type { IMovieCast, IMovieDetails, ISimilarMovie } from "@/types.ts";
 
 interface IGetMovieReturnType {
-  movie: IMovieDetails;
-  cast: IMovieCast[];
-  similar: ISimilarMovie[];
+  movie: IMovieDetails,
+  cast: IMovieCast[],
+  similar: ISimilarMovie[],
 }
 
-async function getMovie(id: string): Promise<IGetMovieReturnType> {
+async function getMovie(id: number): Promise<IGetMovieReturnType> {
   const url = new URL(`https://api.themoviedb.org/3/movie/${id}`);
   url.searchParams.set("api_key", import.meta.env.VITE_TMDB_API_KEY || "");
 

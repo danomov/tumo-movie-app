@@ -4,7 +4,7 @@ import { Star } from "lucide-react";
 import type { IMovie } from "@/types.ts";
 
 interface ISuggestionItemProps {
-  suggestion: IMovie;
+  suggestion: IMovie,
 }
 
 function SuggestionItem({ suggestion }: ISuggestionItemProps) {

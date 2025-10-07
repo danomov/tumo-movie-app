@@ -1,7 +1,7 @@
 import type { IGenre } from "@/types.ts";
 
 interface IGenreReturnType {
-  genres: IGenre[];
+  genres: IGenre[],
 }
 
 async function getGenres(): Promise<IGenreReturnType> {

@@ -6,8 +6,8 @@ import useOutsideClick from "@/hooks/useClickOutside.ts";
 import type { IMovie } from "@/types.ts";
 
 interface ISuggestionsProps {
-  suggestions?: IMovie[];
-  debouncedSearchQuery: string;
+  suggestions?: IMovie[],
+  debouncedSearchQuery: string,
 }
 
 function Suggestions({ suggestions, debouncedSearchQuery }: ISuggestionsProps) {

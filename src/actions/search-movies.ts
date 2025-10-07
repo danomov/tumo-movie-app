@@ -1,8 +1,8 @@
 import type { ISearchMoviesReturnType } from "@/types.ts";
 
 interface ISearchMoviesProps {
-  page: number;
-  query: string;
+  page: number,
+  query: string,
 }
 
 async function searchMovies({ page, query }: ISearchMoviesProps): Promise<ISearchMoviesReturnType> {

@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 
 interface IUseIntersectionObserver {
-  callback: (entries: IntersectionObserverEntry[]) => void;
-  root: Document | Element | null;
-  rootMargin?: string;
-  threshold?: number | number[];
+  callback: (entries: IntersectionObserverEntry[]) => void,
+  root: Document | Element | null,
+  rootMargin?: string,
+  threshold?: number | number[],
 }
 
 const useIntersectionObserver = ({

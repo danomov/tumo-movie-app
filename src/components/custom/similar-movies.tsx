@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card.tsx";
 import constructMoviePath from "@/utils/construct-movie-path.ts";
 import constructPosterPath from "@/utils/construct-poster-path.ts";
 
-function SimilarMovies({ similar }: { similar: IMovie[] }) {
+function SimilarMovies({ similar }: { similar: IMovie[], }) {
   return (
     <section>
       <h2 className="text-2xl font-bold mb-6">Similar Movies</h2>

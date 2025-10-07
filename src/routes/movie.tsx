@@ -15,9 +15,9 @@ function Movie() {
   const { id: movieId } = useParams();
 
   const { data, isLoading } = useQuery({
-    queryKey: ["movie", movieId],
+    queryKey: ["movie", Number(movieId)],
     queryFn: movieId
-      ? () => getMovie(movieId)
+      ? () => getMovie(Number(movieId))
       : skipToken,
     refetchOnWindowFocus: false,
     staleTime: 1000 * 60 * 60 * 24, // 24 hours

@@ -4,8 +4,8 @@ import { Play } from "lucide-react";
 import TrailerDialog from "@/components/custom/trailer-dialog.tsx";
 
 interface ITrailerActionProps {
-  id: number;
-  title: string;
+  id: number,
+  title: string,
 }
 
 function TrailerAction({ id, title }: ITrailerActionProps) {

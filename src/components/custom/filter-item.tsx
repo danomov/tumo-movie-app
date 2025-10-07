@@ -3,10 +3,10 @@ import { Checkbox } from "@/components/ui/checkbox.tsx";
 import { Label } from "@/components/ui/label.tsx";
 
 interface IFilterItemProps {
-  name: string
-  id: number
-  isActive: boolean
-  onGenreChange: (checked: string | boolean, targetGenreId: number) => void
+  name: string,
+  id: number,
+  isActive: boolean,
+  onGenreChange: (checked: string | boolean, targetGenreId: number) => void,
 }
 
 function FilterItem({ name, id, isActive, onGenreChange }: IFilterItemProps) {

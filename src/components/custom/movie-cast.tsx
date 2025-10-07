@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar.tsx"
 import type { IMovieCast } from "@/types.ts";
 
 interface IMovieCastProps {
-  cast: IMovieCast[];
+  cast: IMovieCast[],
 }
 
 function MovieCast({ cast }: IMovieCastProps) {

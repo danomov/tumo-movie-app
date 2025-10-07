@@ -1,5 +1,5 @@
 interface IResponsiveIframeProps {
-  sourceUrl: string;
+  sourceUrl: string,
 }
 
 function ResponsiveIframe({ sourceUrl }: IResponsiveIframeProps) {

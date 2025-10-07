@@ -1,7 +1,7 @@
 import { type ReactNode, useCallback, useState } from "react";
 import SearchContext from "@/context/search-context";
 
-function SearchContextProvider({ children }: { children: ReactNode }) {
+function SearchContextProvider({ children }: { children: ReactNode, }) {
   const [search, setSearch] = useState("");
 
   const handleSearch = useCallback((value: string) => {
