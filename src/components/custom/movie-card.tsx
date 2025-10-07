@@ -13,7 +13,7 @@ interface IMovieCardProps {
 }
 
 const MovieCard = ({ movie }: IMovieCardProps) => {
-  const releaseDate = useMemo(() => formatReleaseDate(movie.release_date), [movie.release_date]);
+  const releaseDate = useMemo(() => movie.release_date ? formatReleaseDate(movie.release_date) : "", [movie.release_date]);
 
   return (
     <Card

@@ -1,24 +1,27 @@
-import type { IGenre, IMovieDetails } from "@/types.ts";
-import { Badge } from "@/components/ui/badge.tsx";
-import { Star } from "lucide-react";
 import { useMemo } from "react";
+import type { IGenre, IMovieDetails } from "@/types.ts";
+import { Star } from "lucide-react";
 import formatReleaseDate from "@/utils/format-release-date.ts";
 import MovieActions from "@/components/custom/movie-actions.tsx";
+import TagPills from "@/components/custom/tag-pills.tsx";
+import MovieInfoDetails from "@/components/custom/movie-info-details.tsx";
 
 interface IMovieInfoProps {
   movie: IMovieDetails,
 }
 
 function MovieInfo({ movie }: IMovieInfoProps) {
-  const releaseDate = useMemo(() => formatReleaseDate(movie.release_date), [movie.release_date]);
+  const releaseDate = useMemo(() =>
+    movie.release_date
+      ? formatReleaseDate(movie.release_date)
+      : "Release Date: Not Specified", [movie.release_date]
+  );
 
   return (
     <div className="flex-1 text-white">
       <div className="flex flex-wrap gap-2 mb-4">
         {movie.genres.map((genre: IGenre) => (
-          <Badge key={genre.name} variant="secondary" className="bg-white/20 text-white">
-            {genre.name}
-          </Badge>
+          <TagPills key={genre.name} title={genre.name} />
         ))}
       </div>
 
@@ -31,35 +34,7 @@ function MovieInfo({ movie }: IMovieInfoProps) {
       </div>
 
       <MovieActions id={movie.id} title={movie.title} />
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
-        <div>
-          <p>
-            <span className="font-semibold">Studios:</span>
-            <span className="ml-1">{movie.production_companies.map(company => company.name).join(", ")}</span>
-          </p>
-          <p>
-            <span className="font-semibold">Rating:</span>
-            <span className="ml-1">{movie?.vote_average.toFixed(1)}</span>
-          </p>
-          <p>
-            <span className="font-semibold">Budget:</span>
-            <span className="ml-1">{movie.budget}</span>
-          </p>
-        </div>
-        <div>
-          <p>
-            <span className="font-semibold">Box Office:</span>
-            <span className="ml-1">{movie.revenue}</span>
-          </p>
-          <p>
-            <span className="font-semibold">Language:</span>
-            <span className="ml-1">
-              {movie.spoken_languages.map(language => language.english_name).join(", ")}
-            </span>
-          </p>
-        </div>
-      </div>
+      <MovieInfoDetails movie={movie} />
     </div>
   );
 }

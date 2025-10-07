@@ -3,10 +3,10 @@ export interface IMovie {
   title: string,
   overview: string,
   vote_count: number,
-  poster_path: string,
-  release_date: string,
+  poster_path: string | undefined,
+  release_date: string | undefined,
   vote_average: number,
-  backdrop_path: string,
+  backdrop_path: string | undefined,
   genre_ids: number[],
 }
 

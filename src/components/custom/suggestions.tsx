@@ -26,8 +26,9 @@ function Suggestions({ suggestions, debouncedSearchQuery }: ISuggestionsProps) {
   if (!suggestions?.length || !debouncedSearchQuery || !showSuggestions) return null;
 
   return (
-    <div
+    <listbox
       ref={ref}
+      id="suggestions"
       className="absolute inset-x-0 top-[calc(100%+1rem)] z-10 bg-popover rounded-md shadow-lg overflow-hidden"
     >
       {suggestions.slice(0, 3).map((suggestion) => (
@@ -35,7 +36,7 @@ function Suggestions({ suggestions, debouncedSearchQuery }: ISuggestionsProps) {
           <SuggestionItem suggestion={suggestion} />
         </Link>
       ))}
-    </div>
+    </listbox>
   );
 }
 

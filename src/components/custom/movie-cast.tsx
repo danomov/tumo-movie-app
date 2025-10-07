@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card.tsx";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar.tsx";
 import type { IMovieCast } from "@/types.ts";
+import constructAvatarPath from "@/utils/construct-avatar-path.ts";
 
 interface IMovieCastProps {
   cast: IMovieCast[],
@@ -19,7 +20,7 @@ function MovieCast({ cast }: IMovieCastProps) {
                   loading="lazy"
                   alt={actor.name}
                   className="object-cover"
-                  src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
+                  src={constructAvatarPath(actor.profile_path)}
                 />
                 <AvatarFallback>
                   {actor.name}

@@ -1,4 +1,5 @@
 import type { IMovieDetails } from "@/types.ts";
+import constructPosterPath from "@/utils/construct-poster-path.ts";
 
 interface IMovieBgPosterProps {
   title: IMovieDetails["title"],
@@ -11,7 +12,7 @@ function MovieBgPoster({ title, backdropPath }: IMovieBgPosterProps) {
       <img
         alt={title}
         className="object-cover w-full h-full"
-        src={`https://image.tmdb.org/t/p/w500${backdropPath}`}
+        src={constructPosterPath(backdropPath)}
       />
       <div className="absolute inset-0 bg-black/60"/>
     </div>

@@ -51,10 +51,13 @@ function SearchBar() {
     <div className="relative w-full">
       <InputGroup data-disabled>
         <InputGroupInput
+          role="combobox"
           value={searchValue}
           onKeyDown={handleKeyDown}
           onChange={handleInputChange}
           placeholder="Find a movie..."
+          aria-haspopup="listbox"
+          aria-controls="suggestions"
         />
         <InputGroupAddon align="inline-end">
           {isLoading && <Spinner />}
