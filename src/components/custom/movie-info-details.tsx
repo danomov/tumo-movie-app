@@ -1,4 +1,5 @@
 import type { IMovieDetails } from "@/types.ts";
+import { RATING_DECIMAL_POINTS } from "@/constants.ts";
 
 interface IMovieInfoDetailsProps {
   movie: IMovieDetails,
@@ -14,7 +15,7 @@ function MovieInfoDetails({ movie }: IMovieInfoDetailsProps) {
         </p>
         <p>
           <span className="font-semibold">Rating:</span>
-          <span className="ml-1">{movie?.vote_average.toFixed(1)}</span>
+          <span className="ml-1">{movie?.vote_average.toFixed(RATING_DECIMAL_POINTS)}</span>
         </p>
         <p>
           <span className="font-semibold">Budget:</span>

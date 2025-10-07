@@ -1,13 +1,16 @@
 interface IResponsiveIframeProps {
   sourceUrl: string,
+  onSetIFrameRef?: (ref: HTMLIFrameElement | null) => void,
 }
 
-function ResponsiveIframe({ sourceUrl }: IResponsiveIframeProps) {
+function ResponsiveIframe({ sourceUrl, onSetIFrameRef }: IResponsiveIframeProps) {
   return (
     <div className="relative aspect-[6/3]">
       <iframe
         src={sourceUrl}
         frameBorder="0"
+        ref={onSetIFrameRef}
+        loading="lazy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen

@@ -5,6 +5,7 @@ import formatReleaseDate from "@/utils/format-release-date.ts";
 import MovieActions from "@/components/custom/movie-actions.tsx";
 import TagPills from "@/components/custom/tag-pills.tsx";
 import MovieInfoDetails from "@/components/custom/movie-info-details.tsx";
+import { RATING_DECIMAL_POINTS, RATING_STARS_COUNT } from "@/constants.ts";
 
 interface IMovieInfoProps {
   movie: IMovieDetails,
@@ -30,7 +31,9 @@ function MovieInfo({ movie }: IMovieInfoProps) {
 
       <div className="flex items-center gap-2 mb-6">
         <Star className="h-5 w-5 fill-yellow-400 text-yellow-400"/>
-        <span className="text-lg font-semibold">{movie.vote_average.toFixed(1)}/10</span>
+        <span className="text-lg font-semibold">
+          {movie.vote_average.toFixed(RATING_DECIMAL_POINTS)}/{RATING_STARS_COUNT}
+        </span>
       </div>
 
       <MovieActions id={movie.id} title={movie.title} />

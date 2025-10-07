@@ -10,6 +10,7 @@ import constructYoutubeUrl from "@/utils/construct-youtube-url.ts";
 import { skipToken, useQuery } from "@tanstack/react-query";
 import getTrailers from "@/actions/get-trailers.ts";
 import TrailerSkeleton from "@/components/custom/trailer-skeleton.tsx";
+import useCarouselIframe from "@/hooks/useCarouselIframe.tsx";
 
 interface ITrailerDialogProps {
   title: string,
@@ -19,6 +20,8 @@ interface ITrailerDialogProps {
 }
 
 function TrailerDialog({ title, movieId, open, onOpenChange }: ITrailerDialogProps) {
+  const { handleIFrameRefCallback, handleSwitchActiveCarouselItem } = useCarouselIframe();
+
   const { data, isLoading } = useQuery({
     queryKey: ["trailers", movieId],
     queryFn: movieId
@@ -37,9 +40,12 @@ function TrailerDialog({ title, movieId, open, onOpenChange }: ITrailerDialogPro
         </DialogHeader>
         <Carousel>
           <CarouselContent>
-            {data?.trailers.map((trailer) => (
+            {data?.trailers.map((trailer, index) => (
               <CarouselItem key={trailer.id}>
-                <ResponsiveIframe sourceUrl={constructYoutubeUrl(trailer.key)} />
+                <ResponsiveIframe
+                  sourceUrl={constructYoutubeUrl(trailer.key)}
+                  onSetIFrameRef={(ref: HTMLIFrameElement | null) => handleIFrameRefCallback(ref, index)}
+                />
               </CarouselItem>
             ))}
             {!data || isLoading && (
@@ -49,8 +55,8 @@ function TrailerDialog({ title, movieId, open, onOpenChange }: ITrailerDialogPro
             )}
           </CarouselContent>
 
-          <CarouselPrevious/>
-          <CarouselNext/>
+          <CarouselPrevious onScrollPrevCallback={() => handleSwitchActiveCarouselItem("prev")} />
+          <CarouselNext onScrollNextCallback={() => handleSwitchActiveCarouselItem("next")} />
         </Carousel>
       </DialogContent>
     </Dialog>

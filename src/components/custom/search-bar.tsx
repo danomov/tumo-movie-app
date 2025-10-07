@@ -10,13 +10,15 @@ import useSearchContext from "@/hooks/useSearchContext.ts";
 import useFilterContext from "@/hooks/useFilterContext.ts";
 import Suggestions from "@/components/custom/suggestions.tsx";
 
+const MIN_SEARCH_QUERY_LENGTH = 3;
+
 function SearchBar() {
   const [searchValue, setSearchValue] = useState("");
   const debouncedSearchQuery = useDebounce(searchValue, 1000);
 
   const { data, isLoading } = useQuery({
     queryKey: ["search-movie", debouncedSearchQuery],
-    queryFn: debouncedSearchQuery?.length > 3
+    queryFn: debouncedSearchQuery?.length > MIN_SEARCH_QUERY_LENGTH
       ? () => searchMovies({ query: debouncedSearchQuery, page: 1 })
       : skipToken,
     refetchOnWindowFocus: false,
@@ -62,7 +64,9 @@ function SearchBar() {
         <InputGroupAddon align="inline-end">
           {isLoading && <Spinner />}
           {searchValue && !isLoading && (
-            <Button variant="ghoster" onClick={handleClearSearch}><X /></Button>
+            <Button variant="ghoster" onClick={handleClearSearch} aria-label="clear search">
+              <X />
+            </Button>
           )}
         </InputGroupAddon>
       </InputGroup>

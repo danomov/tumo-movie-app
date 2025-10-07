@@ -1,6 +1,7 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent } from "@/components/ui/card";
+import { MOVIE_CAST_SKELETON_ITEMS_COUNT, SIMILAR_MOVIES_SKELETON_ITEMS_COUNT } from "@/constants.ts";
 
 function MovieDetailsSkeleton() {
   return (
@@ -68,7 +69,7 @@ function MovieDetailsSkeleton() {
         <section className="mb-12">
           <Skeleton className="h-8 w-32 mb-6" />
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {new Array(6).fill(1).map((_, index) => (
+            {new Array(MOVIE_CAST_SKELETON_ITEMS_COUNT).fill(1).map((_, index) => (
               <Card key={index}>
                 <CardContent className="p-4 text-center">
                   <Skeleton className="w-20 h-20 rounded-full mx-auto mb-3" />
@@ -85,7 +86,7 @@ function MovieDetailsSkeleton() {
         <section>
           <Skeleton className="h-8 w-48 mb-6" />
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {new Array(6).fill(1).map((_, index) => (
+            {new Array(SIMILAR_MOVIES_SKELETON_ITEMS_COUNT).fill(1).map((_, index) => (
               <Card key={index}>
                 <CardContent className="p-0">
                   <Skeleton className="aspect-[3/4] w-full rounded-lg" />

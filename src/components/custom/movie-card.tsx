@@ -7,6 +7,7 @@ import formatReleaseDate from "@/utils/format-release-date.ts";
 import constructMoviePath from "@/utils/construct-movie-path.ts";
 import MovieCardFavorite from "@/components/custom/movie-card-favorite.tsx";
 import constructPosterPath from "@/utils/construct-poster-path.ts";
+import { RATING_DECIMAL_POINTS } from "@/constants.ts";
 
 interface IMovieCardProps {
   movie: IMovie,
@@ -33,7 +34,7 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
             <div className="absolute top-0 right-0 p-3 text-white">
               <div className="flex items-center gap-1 text-sm">
                 <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-                {movie.vote_average.toFixed(1)}
+                {movie.vote_average.toFixed(RATING_DECIMAL_POINTS)}
               </div>
             </div>
           </div>

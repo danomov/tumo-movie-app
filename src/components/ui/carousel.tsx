@@ -173,9 +173,18 @@ function CarouselPrevious({
   className,
   variant = "outline",
   size = "icon",
+  onScrollPrevCallback,
   ...props
-}: React.ComponentProps<typeof Button>) {
+}: React.ComponentProps<typeof Button> & { onScrollPrevCallback?: () => void, }) {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel();
+
+  const handleScrollPrev = React.useCallback(() => {
+    if (onScrollPrevCallback) {
+      onScrollPrevCallback();
+    }
+
+    scrollPrev();
+  }, [scrollPrev, onScrollPrevCallback]);
 
   return (
     <Button
@@ -190,7 +199,7 @@ function CarouselPrevious({
         className
       )}
       disabled={!canScrollPrev}
-      onClick={scrollPrev}
+      onClick={handleScrollPrev}
       {...props}
     >
       <ArrowLeft />
@@ -203,9 +212,18 @@ function CarouselNext({
   className,
   variant = "outline",
   size = "icon",
+  onScrollNextCallback,
   ...props
-}: React.ComponentProps<typeof Button>) {
+}: React.ComponentProps<typeof Button> & { onScrollNextCallback?: () => void, }) {
   const { orientation, scrollNext, canScrollNext } = useCarousel();
+
+  const handleScrollNext = React.useCallback(() => {
+    if (onScrollNextCallback) {
+      onScrollNextCallback();
+    }
+
+    scrollNext();
+  }, [scrollNext, onScrollNextCallback]);
 
   return (
     <Button
@@ -220,7 +238,7 @@ function CarouselNext({
         className
       )}
       disabled={!canScrollNext}
-      onClick={scrollNext}
+      onClick={handleScrollNext}
       {...props}
     >
       <ArrowRight />

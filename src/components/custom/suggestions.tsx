@@ -26,8 +26,9 @@ function Suggestions({ suggestions, debouncedSearchQuery }: ISuggestionsProps) {
   if (!suggestions?.length || !debouncedSearchQuery || !showSuggestions) return null;
 
   return (
-    <listbox
+    <div
       ref={ref}
+      role="listbox"
       id="suggestions"
       className="absolute inset-x-0 top-[calc(100%+1rem)] z-10 bg-popover rounded-md shadow-lg overflow-hidden"
     >
@@ -36,7 +37,7 @@ function Suggestions({ suggestions, debouncedSearchQuery }: ISuggestionsProps) {
           <SuggestionItem suggestion={suggestion} />
         </Link>
       ))}
-    </listbox>
+    </div>
   );
 }
 

@@ -2,6 +2,7 @@ import constructPosterPath from "@/utils/construct-poster-path.ts";
 import formatReleaseDate from "@/utils/format-release-date.ts";
 import { Star } from "lucide-react";
 import type { IMovie } from "@/types.ts";
+import { RATING_DECIMAL_POINTS } from "@/constants.ts";
 
 interface ISuggestionItemProps {
   suggestion: IMovie,
@@ -25,7 +26,7 @@ function SuggestionItem({ suggestion }: ISuggestionItemProps) {
         <p className="text-sm line-clamp-2">{suggestion.overview}</p>
         <div className="flex items-center gap-1">
           <Star className="size-3 fill-yellow-500 text-yellow-500" />
-          <p>{suggestion.vote_average.toFixed(1)}</p>
+          <p>{suggestion.vote_average.toFixed(RATING_DECIMAL_POINTS)}</p>
         </div>
       </div>
     </div>
